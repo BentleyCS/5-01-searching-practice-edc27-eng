@@ -3,17 +3,41 @@ def randomSearch(items:list, target) -> int:
     #Modify the below function such that it takes in a list of items and a target value.
     #Randomly choose an item from the list and if it isn't the target value try again.
     #print out the amount of tries it took and return the index of the target value
-    pass
+    tries = 0
+    for i in range(len(items)):
+        if items[i] != target:
+            tries += 1
+        else:
+            print(tries)
+            return i
 
 def linearSearch(items:list, target) ->tuple[int,int]:
     #Modify the below function such that it implements linear search.
     #Return the index of the target value and the amount of checks it took
     #if the value is not within the list return -1 as the index.
-    pass
+    checks = 1
+    for i in range(len(items)):
+        if items[i] != target:
+            checks += 1
+        else:
+            return i, checks
+    return -1, len(items)
 
 
 def binarySearch(items:list, target) -> tuple[int,int]:
-    # Modify the below function such that it implements linear search.
+    # Modify the below function such that it implements binary search.
     # Return the index of the target value and the amount of checks it took
     # if the value is not within the list return -1 as the index.
-    pass
+    left = 0
+    right = len(items)-1
+    checks = 0
+    while left <= right:
+        checks +=1
+        middle = (left + right) // 2
+        if items[middle] == target:
+            return middle, checks
+        elif items[middle] < target:
+            left = middle+1
+        else:
+            right = middle-1
+    return -1, checks
